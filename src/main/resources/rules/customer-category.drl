@@ -1,0 +1,33 @@
+import com.praveen.drools.example.model.CustomerRequest
+import com.praveen.drools.example.model.CustomerCategory;
+global com.praveen.drools.example.model.CustomerType customerType;
+
+dialect "mvel"
+
+rule "Categorize customer based on age"
+    when
+        CustomerRequest(age < 20)
+    then
+        customerType.setCustomerType(CustomerCategory.KIDS);
+end
+
+rule "Categorize senior citizen customer based on age"
+    when
+        CustomerRequest(age > 50)
+    then
+        customerType.setCustomerType(CustomerCategory.SENIOR_CITIZEN);
+end
+
+rule "Categorize customer based on number of orders"
+    when
+        CustomerRequest(numberOfOrders == 0)
+    then
+        customerType.setCustomerType(CustomerCategory.SUSPENDED);
+end
+
+rule "Categorize customer general case"
+    when
+        CustomerRequest((gender == "M" || gender == "F") && age > 20 && age < 50)
+    then
+        customerType.setCustomerType(CustomerCategory.GENERAL);
+end
