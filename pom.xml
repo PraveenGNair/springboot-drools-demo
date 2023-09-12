@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot with Drools Engine</description>
 	<properties>
 		<java.version>11</java.version>
-		<drools.version>7.67.0.Final</drools.version>
+		<drools.version>7.69.0.Final</drools.version>
 		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
 	</properties>
 	<dependencies>
